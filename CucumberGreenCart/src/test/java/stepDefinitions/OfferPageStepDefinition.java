@@ -2,12 +2,10 @@ package stepDefinitions;
 
 import java.util.Iterator;
 import java.util.Set;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
-
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -30,7 +28,7 @@ public OfferPageStepDefinition(TestContextSetup testContextSetup)
 	this.testContextSetup=testContextSetup;
 }
 
-@Then("user searched for {string} shortname in offers page")
+@Then("^user searched for (.+) shortname in offers page$")
 public void user_searched_for_same_shortname_in_offers_page(String shortName) throws InterruptedException {
     //offer pafe->enter_>grab text
 

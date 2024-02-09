@@ -28,13 +28,14 @@ LandingPage landingPage;
 		this.testContextSetup=testContextSetup;
 		this.landingPage =testContextSetup.pageObjectManager.getLandingPage();
 	}
-	@Given("User is on GreenCart Landing page")
-	public void user_is_on_green_cart_landing_page() {
-		
+	
+	@Given("user is on GreenCart Landing page")
+	public void user_is_on_green_cart_landing_page() 
+	{	
 		Assert.assertTrue(landingPage.getTitleLandingPage().contains("GreenKart"));
 	}
 
-	@When("user searched with Shortname {string} and extracted actual name of product")
+	@When("^user searched with shortname (.+) and extracted actual name of product$")
 	public void user_searched_with_shortname_and_extracted_actual_name_of_product(String shortName ) throws InterruptedException {
 		
 		landingPage.searchItem(shortName);
@@ -43,4 +44,10 @@ LandingPage landingPage;
 		this.testContextSetup.landingPageProductName=landingPageProductName;
 		System.out.println("landing page "+landingPageProductName);			
 	}	
+	@When("Added {string} items of the selected product to cart")
+	public void added_items_of_the_selected_product_to_cart(String quantity)
+	{
+		landingPage.incrementQuantity(Integer.parseInt(quantity));
+		landingPage.addToCart();
 	}
+}
